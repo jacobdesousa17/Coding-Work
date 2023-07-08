@@ -1,0 +1,199 @@
+//include libraries
+#include <Servo.h>
+
+//GLOBAL
+Servo servoLeft; //make a new servo object for LEFT
+Servo servoRight; //servo for right motor
+void setup(){
+  start();//run start function
+  
+
+  //begin movement
+  //Go straight half speed
+  servoRight.writeMicroseconds(1400); //rotate clockwise, half speed(1300)
+  servoLeft.writeMicroseconds(1600); //counterclockwise half speed (1700)
+  delay(2400); //wait 2.4 seconds
+
+  //stop
+  servoRight.writeMicroseconds(1500);//stop
+  servoLeft.writeMicroseconds(1500);//stop
+  delay(1000);//wait 1 second
+
+  //turn left
+  servoRight.writeMicroseconds(1500);//stop
+  servoLeft.writeMicroseconds(1300);//rotate clockwise
+  delay(1100);
+
+   //stop
+  servoRight.writeMicroseconds(1500);//stop
+  servoLeft.writeMicroseconds(1500);//stop
+  delay(1000);//wait 1 second
+
+  //go straight 2
+  servoRight.writeMicroseconds(1400); //rotate clockwise, half speed(1300)
+  servoLeft.writeMicroseconds(1600); //counterclockwise half speed (1700)
+  delay(3000); //wait 2.8 seconds
+
+  //stop
+  servoRight.writeMicroseconds(1500);//stop
+  servoLeft.writeMicroseconds(1500);//stop
+  delay(1000);//wait 1 second
+
+  //turn right
+  servoRight.writeMicroseconds(1700);//rotate clockwise
+  servoLeft.writeMicroseconds(1500);//stop
+  delay(1200);
+
+  //stop
+  servoRight.writeMicroseconds(1500);//stop
+  servoLeft.writeMicroseconds(1500);//stop
+  delay(1000);//wait 1 second
+
+  //go straight 3
+  servoRight.writeMicroseconds(1400); //rotate clockwise, half speed(1300)
+  servoLeft.writeMicroseconds(1600); //counterclockwise half speed (1700)
+  delay(2600); //wait 2.8 seconds
+
+  //stop
+  servoRight.writeMicroseconds(1500);//stop
+  servoLeft.writeMicroseconds(1500);//stop
+  delay(1000);//wait 1 second
+
+  //turn right
+  servoRight.writeMicroseconds(1700);//rotate clockwise
+  servoLeft.writeMicroseconds(1500);//stop
+  delay(1100);
+
+  //stop
+  servoRight.writeMicroseconds(1500);//stop
+  servoLeft.writeMicroseconds(1500);//stop
+  delay(1000);//wait 1 second
+
+  //go straight 4
+  servoRight.writeMicroseconds(1400); //rotate clockwise, half speed(1300)
+  servoLeft.writeMicroseconds(1600); //counterclockwise half speed (1700)
+  delay(2900); //wait 2.8 seconds
+
+  //stop
+  servoRight.writeMicroseconds(1500);//stop
+  servoLeft.writeMicroseconds(1500);//stop
+  delay(1000);//wait 1 second
+
+  //turn right
+  servoRight.writeMicroseconds(1700);//rotate clockwise
+  servoLeft.writeMicroseconds(1500);//stop
+  delay(1100);
+
+  //stop
+  servoRight.writeMicroseconds(1500);//stop
+  servoLeft.writeMicroseconds(1500);//stop
+  delay(1000);//wait 1 second
+
+  //go straight 5
+  servoRight.writeMicroseconds(1400); //rotate clockwise, half speed(1300)
+  servoLeft.writeMicroseconds(1600); //counterclockwise half speed (1700)
+  delay(2600); //wait 2.8 seconds
+
+  //stop
+  servoRight.writeMicroseconds(1500);//stop
+  servoLeft.writeMicroseconds(1500);//stop
+  delay(1000);//wait 1 second
+
+  //turn right
+  servoRight.writeMicroseconds(1700);//rotate clockwise
+  servoLeft.writeMicroseconds(1500);//stop
+  delay(1100);
+
+   //stop
+  servoRight.writeMicroseconds(1500);//stop
+  servoLeft.writeMicroseconds(1500);//stop
+  delay(1000);//wait 1 second
+
+  //go straight 6
+  servoRight.writeMicroseconds(1400); //rotate clockwise, half speed(1300)
+  servoLeft.writeMicroseconds(1600); //counterclockwise half speed (1700)
+  delay(2700); //wait 2.8 seconds
+
+  //stop
+  servoRight.writeMicroseconds(1500);//stop
+  servoLeft.writeMicroseconds(1500);//stop
+  delay(1000);//wait 1 second
+
+  //turn left
+  servoRight.writeMicroseconds(1500);//stop
+  servoLeft.writeMicroseconds(1300);//rotate clockwise
+  delay(1100);
+
+   //stop
+  servoRight.writeMicroseconds(1500);//stop
+  servoLeft.writeMicroseconds(1500);//stop
+  delay(1000);//wait 1 second
+
+  //Go straight 7
+  servoRight.writeMicroseconds(1400); //rotate clockwise, half speed(1300)
+  servoLeft.writeMicroseconds(1600); //counterclockwise half speed (1700)
+  delay(2400); //wait 2.4 seconds
+
+   //stop
+  servoRight.writeMicroseconds(1500);//stop
+  servoLeft.writeMicroseconds(1500);//stop
+  delay(1000);//wait 1 second
+
+  //turn left
+  servoRight.writeMicroseconds(1500);//stop
+  servoLeft.writeMicroseconds(1300);//rotate clockwise
+  delay(1100);
+
+  //stop
+  servoRight.writeMicroseconds(1500);//stop
+  servoLeft.writeMicroseconds(1500);//stop
+  delay(1000);//wait 1 second
+
+  //go straight 8
+  servoRight.writeMicroseconds(1400); //rotate clockwise, half speed(1300)
+  servoLeft.writeMicroseconds(1600); //counterclockwise half speed (1700)
+  delay(2800); //wait 2.8 seconds
+  
+  //stop
+  servoRight.writeMicroseconds(1500);//stop
+  servoLeft.writeMicroseconds(1500);//stop
+  delay(1000);//wait 1 second
+
+
+
+
+
+  end();//run end function
+
+}////close SETUP
+
+void loop(){
+  
+}////close LOOP
+
+void start(){
+  //code to run at start
+  //set the pinMode
+  servoLeft.attach(13); //left servo on pin 9
+  servoRight.attach(12); //right servo on pin 10
+  Serial.begin(9600); //turn on monitor
+  
+    
+  //program that runs ONCE
+
+  //play start sequence
+  tone(4, 392, 500); //play G4 for .5s
+  delay(500); //wait .5s to play
+  tone(4, 329.6, 500); //play e4
+  delay(500); 
+  tone(4, 392, 500); //play G4 for .5s
+  delay(500); //wait .5s to play
+
+}// close start
+
+void end(){
+
+
+  servoRight.detach();// disconnect servo
+  servoLeft.detach();// disconnect servo
+}//close end
