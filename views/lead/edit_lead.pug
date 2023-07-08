@@ -1,0 +1,29 @@
+doctype html
+html(lang='en')
+  include ../common/head.pug
+  +head("Edit Lead")
+  body
+    header
+      include ../common/navbar.pug
+      +navbar()
+      .body
+        .container
+          .row.align-items-center
+            .col-md-6.order-md-1.text-center.text-md-left.pr-md-5
+              h1 Edit Lead
+              form(action="/lead/" + lead.id + "/edit", method = "POST")
+                .mb-3
+                  label(for="lead_id") ID:
+                  input(name="lead_id", type="id", placeholder="Enter your ID", value = lead.id).form-control
+                .mb-3
+                  div
+                    label(for="lead_name") Name:
+                  input(name="lead_name", type="name", placeholder="Enter your First name", value = lead.name).form-control
+                .mb-3
+                  div 
+                    label(for="lead_email") Email:
+                  input(name="lead_email", type="email", placeholder="Enter your Email", value = lead.email).form-control
+                  
+                button(type="submit").btn.btn-primary Save
+    include ../common/footer.pug
+    +footer()

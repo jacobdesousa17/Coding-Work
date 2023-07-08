@@ -1,0 +1,53 @@
+doctype html
+html(lang='en')
+  include common/head.pug
+  +head("MyNodeJS")
+  body
+    header
+      include common/navbar.pug
+      +navbar(user)
+      
+    .body
+      .container
+        .row.align-items-center
+          .col-md-6.order-md-1.text-center.text-md-left.pr-md-5
+            h1.mb-3 Minimum Viable Landing Page
+            p.lead This tutorial teaches you how to build a NodeJS web application covering key topics.
+            p.lead.mb-4 Learn how to launch a landing page and start collecting sales leads.
+      .container
+        h1= title
+        p Welcome to Askiaa/ Jingxi's #{title} webpage
+        .row 
+          .col-10.col-xl-4.col-lg-6.col-sm-10
+            form(action="/", method = "POST")
+              .input-group.mb-3
+                input(name="lead_name", type="name", placeholder="Enter your First name").form-control
+              .input-group.mb-3
+                input(name="lead_email", type="email", placeholder="Enter your Email").form-control
+              if user
+                button(type="submit").btn.btn-primary Submit me
+              else 
+                button(type="submit" disabled).btn.btn-primary Submit me
+                .require-loggin-info.mt-1 * You need to login first
+        br
+        if leads
+          h1 Leads
+          table
+            th UUID
+            th Email
+            th Name
+            th Manage
+            for lead in leads
+                tr(id=lead.id)
+                  td <span> #{lead.id}</span>
+                  td <span> #{lead.email}</span>
+                  td <span> #{lead.name}</span>
+                  td 
+                    a(href="/lead/" + lead.id) Details
+                    br
+                    br
+                    button(onclick=`deleteLead('${lead.id}')`).btn.btn-primary Delete
+    include common/footer.pug
+    +footer()              
+    script(src='/javascripts/leads.js')
+    
