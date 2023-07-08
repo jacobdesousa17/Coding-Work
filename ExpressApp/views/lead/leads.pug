@@ -1,0 +1,36 @@
+doctype html
+html(lang='en')
+  include ../common/head.pug
+  +head("Leads")
+  body
+    header
+      include ../common/navbar.pug
+      +navbar(user)
+      .body
+        .container
+          .row.align-items-center
+            .col-md-10.order-md-1.text-center.text-md-left.pr-md-5
+              h1 Leads
+              table.table.table-hover
+                thead
+                  tr
+                    th(scope="col") UUID
+                    th(scope="col") Email
+                    th(scope="col") Name
+                    th(scope="col") Actions
+                  tr
+                tbody                
+                  for lead in leads
+                    tr(id=lead.id)
+                      td
+                        span #{lead.id}
+                      td
+                        span #{lead.email}
+                      td
+                        span #{lead.name}
+                      td 
+                        a(href="/lead/" + lead.id).btn.btn-outline-success.mr-2 Details
+                        button(onclick=`deleteLead('${lead.id}')`).btn.btn-outline-danger Delete
+    include ../common/footer.pug
+    +footer()
+    script(src='/javascripts/leads.js')
