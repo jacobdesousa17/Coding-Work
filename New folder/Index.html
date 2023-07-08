@@ -1,0 +1,32 @@
+// Index.html
+<HTML>
+
+    <HEAD>
+    
+    <TITLE>TECH 3740 project</TITLE>
+    </HEAD>
+    <BODY>
+    <br> 
+    Welcome to Jacob De Sousa - Orr TECH 3740 project.
+    <br> <br>
+    <UL style="margin:0;">
+    <li><a href="view_admin.php">View all admin</a>
+    <br> <br>
+    </UL>
+    <form action="search_admin.php" method='get'>
+    Enter a partial address to find admin.
+    <br>
+    (* for listing all admin.)
+    <br>
+    <input type="text" name='keyword' size=20 required>
+    <input type="submit" value ="Search">
+    </form>
+    
+    <form action="login.php" method="post">
+    Employee login ID: <input type="text" name="username"  required >
+    <br>Password: <input type="password" name="password"  required >
+    <input type="submit" value="Submit">
+    </form>
+    </BODY>
+    </HTML>
+    
