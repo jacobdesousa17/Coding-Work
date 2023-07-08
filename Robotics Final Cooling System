@@ -1,0 +1,80 @@
+#include <LiquidCrystal.h>
+#include <Servo.h>
+#include "DHT.h"
+
+#define DHTPIN 13 //dht on pin 13
+#define DHTTYPE DHT11
+#define ENABLE 10 //DC motor_fan on pin 10
+#define DIRA 8 //
+#define DIRB 9
+
+
+//GLOBAL
+const int RS = 12, E = 11, D4 = 5, D5 = 4, D6 = 3, D7 = 2; //setup LCD pins
+LiquidCrystal lcd(RS, E, D4, D5, D6, D7); //LCD
+DHT dht(DHTPIN, DHTTYPE); //dht
+Servo backServo;
+Servo frontServo;
+
+void setup() {
+  pinMode(ENABLE,OUTPUT);
+  pinMode(DIRA,OUTPUT);
+  pinMode(DIRB,OUTPUT);
+  backServo.attach(7); //servo on pin 7
+  frontServo.attach(6); //servo on pin 6
+  backServo.write(0);
+  frontServo.write(0);
+  //analogWrite(pwm, 255);
+  Serial.begin(9600);
+  dht.begin();// initialize the sensor
+  
+}// close setup
+
+void loop() {
+  
+  float tempF = dht.readTemperature(true);//read temp as F
+
+  if(tempF > 78.0 && tempF < 78.49){
+    openFlaps();
+  }
+  else if(tempF > 78.5 && tempF < 100.0){
+    openFlaps();
+    fanOn();
+  }
+  else{
+    closeFlaps();
+  }
+
+
+  // Print the temperature on the LCD;
+  lcd.begin(16, 2); //set up number of columns and rows
+  
+  lcd.setCursor(0,0); //move cursor to (0,0)
+  lcd.print("Temp:"); // print message at (16, 2)
+  lcd.setCursor(5, 0); // move cursor to (2,1)
+  lcd.print(tempF);//print temperature
+  lcd.print((char)223);
+  lcd.print("F");
+ // lcd.setCursor(0,1);
+  //lcd.print("HELLO!");
+
+  delay(2000); // wait a second between readings
+}// close loop
+
+void openFlaps(){
+    frontServo.write(90); //servo to 90 degrees (OPEN)
+    backServo.write(90); //servo to 90 degrees (OPEN)
+    digitalWrite(ENABLE, LOW); //fan OFF
+}//close openFlaps functiobn
+
+void closeFlaps(){
+    frontServo.write(0); //servo to 0 degrees(CLOSED)
+    backServo.write(0); //servo to 0 degrees(CLOSED)
+    digitalWrite(ENABLE, LOW); //fan OFF
+}//close closeFlaps function
+
+void fanOn(){
+    digitalWrite(ENABLE, HIGH); //fan ON
+    digitalWrite(DIRA,LOW); //one way
+    digitalWrite(DIRB,HIGH);
+}//close fanOn function 
